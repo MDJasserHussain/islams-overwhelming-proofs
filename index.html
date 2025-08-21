@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Islam Unveiled: A Categorical Exposition of Evidence</title>
+    <!-- Chosen Palette: Calm Harmony (Dark Slate & Teal) -->
+    <!-- Application Structure Plan: A single-page, vertical-scrolling SPA with a sticky top navigation to jump between five evidence categories. This structure provides a clear, linear narrative path while allowing non-linear exploration. Each category uses interactive cards/tabs/accordions to present detailed information without overwhelming the user, fostering engagement and better information retention. -->
+    <!-- Visualization & Content Choices: 1. Prophet's Character -> Info -> Grid of styled cards -> Hover effects -> Justification: Breaks down an abstract topic into digestible points. 2. Historical/Prophecy/Science -> Info -> Interactive grid of cards/tabs with icons -> Click-to-expand -> Justification: Segments distinct pieces of evidence for focused learning. 3. Mathematical Patterns -> Inform/Engage -> Dynamic JS counters -> Scroll-triggered animation -> Justification: Makes numerical data impactful and memorable. All icons are HTML/CSS/Unicode. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a;
+            color: #cbd5e1;
+        }
+        .section-card {
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px -5px rgba(20, 184, 166, 0.1);
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+        .accordion-button.active + .accordion-content {
+            max-height: 500px;
+        }
+        .accordion-button .icon {
+            transition: transform 0.3s ease;
+        }
+        .accordion-button.active .icon {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-slate-900/80 backdrop-blur-sm sticky top-0 z-50 border-b border-slate-800">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-xl md:text-2xl font-bold text-white">Islam <span class="text-teal-400">Unveiled</span></a>
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#character" class="text-slate-300 hover:text-teal-400 transition-colors">Character</a>
+                <a href="#history" class="text-slate-300 hover:text-teal-400 transition-colors">History</a>
+                <a href="#prophecy" class="text-slate-300 hover:text-teal-400 transition-colors">Prophecy</a>
+                <a href="#science" class="text-slate-300 hover:text-teal-400 transition-colors">Science</a>
+                <a href="#nature" class="text-slate-300 hover:text-teal-400 transition-colors">Nature of Qur'an</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-slate-300">
+                <span class="menu-icon-open">☰</span>
+                <span class="menu-icon-close hidden">✕</span>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 flex flex-col space-y-2">
+            <a href="#character" class="block py-2 text-slate-300 hover:text-teal-400">Character</a>
+            <a href="#history" class="block py-2 text-slate-300 hover:text-teal-400">History</a>
+            <a href="#prophecy" class="block py-2 text-slate-300 hover:text-teal-400">Prophecy</a>
+            <a href="#science" class="block py-2 text-slate-300 hover:text-teal-400">Science</a>
+            <a href="#nature" class="block py-2 text-slate-300 hover:text-teal-400">Nature of Qur'an</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6">
+
+        <section class="min-h-[80vh] flex flex-col justify-center items-center text-center py-20">
+            <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight">A Categorical Exposition <br> of <span class="text-teal-400">Evidence</span></h1>
+            <p class="mt-6 text-lg md:text-xl max-w-3xl text-slate-400">An interactive exploration of the compelling proofs for the truthfulness of Islam, based on the Prophet's character, and the historical, prophetic, scientific, and linguistic nature of the Qur'an.</p>
+        </section>
+
+        <div class="space-y-24 md:space-y-32">
+
+            <section id="character">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-white">1. The Life & Character of the Prophet (ﷺ)</h2>
+                <p class="mt-4 text-center max-w-3xl mx-auto text-slate-400">The first proof lies in the impeccable character of a man whose truthfulness was established long before his mission began.</p>
+                <div class="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="section-card p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-teal-400">Al-Amin (The Trustworthy)</h3>
+                        <p class="mt-3 text-slate-300">Universally known by this title, even by his staunchest enemies, for his absolute honesty.</p>
+                    </div>
+                    <div class="section-card p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-teal-400">Mercy & Compassion</h3>
+                        <p class="mt-3 text-slate-300">He pardoned his worst persecutors after conquering Makkah, an act inconsistent with a vengeful man.</p>
+                    </div>
+                    <div class="section-card p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-teal-400">Unwavering Justice</h3>
+                        <p class="mt-3 text-slate-300">He famously declared he would apply the law even to his own daughter, ensuring no one was above it.</p>
+                    </div>
+                    <div class="section-card p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-teal-400">Humility & Simplicity</h3>
+                        <p class="mt-3 text-slate-300">Despite being the leader of Arabia, he lived in a modest clay house and rejected all worldly luxury.</p>
+                    </div>
+                    <div class="section-card p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-teal-400">Steadfast Under Persecution</h3>
+                        <p class="mt-3 text-slate-300">For 13 years in Makkah, he and his followers faced boycotts and torture without him ever renouncing his message.</p>
+                    </div>
+                    <div class="section-card p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-teal-400">Consistency of Message</h3>
+                        <p class="mt-3 text-slate-300">For 23 years, his core message of pure monotheism never wavered or contradicted itself, despite changing circumstances.</p>
+                    </div>
+                </div>
+
+                <div class="mt-16">
+                    <h3 class="text-2xl md:text-3xl font-bold text-center text-white">If Not a Prophet, Then What?</h3>
+                    <p class="mt-3 text-center max-w-2xl mx-auto text-slate-400">An examination of the only logical alternatives, and why they fail under scrutiny.</p>
+                    <div class="mt-8 max-w-3xl mx-auto space-y-4">
+                        <div class="accordion-item bg-slate-800 rounded-lg border border-slate-700">
+                            <button class="accordion-button w-full text-left p-5 font-semibold text-white flex justify-between items-center">Motive 1: For Wealth?<span class="icon text-teal-400">▼</span></button>
+                            <div class="accordion-content px-5 pb-5 text-slate-300">He rejected offers of immense riches from the leaders of Quraish. He died with his armor mortgaged for a small amount of barley. His life was one of voluntary poverty.
+                            <div class="mt-4 pt-3 border-t border-slate-700"><p class="text-xs text-slate-400 font-semibold">REFERENCE:</p><p class="text-sm text-slate-300 italic">Recorded in Sahih al-Bukhari 2916. The offers of wealth from the Quraish are documented in Ibn Ishaq's "Sirah Rasul Allah."</p></div></div>
+                        </div>
+                        <div class="accordion-item bg-slate-800 rounded-lg border border-slate-700">
+                            <button class="accordion-button w-full text-left p-5 font-semibold text-white flex justify-between items-center">Motive 2: For Power?<span class="icon text-teal-400">▼</span></button>
+                            <div class="accordion-content px-5 pb-5 text-slate-300">He explicitly refused the offer to be made king. When a solar eclipse coincided with his son's death, he immediately corrected the people's superstitious belief, refusing to use the event to build personal authority.
+                            <div class="mt-4 pt-3 border-t border-slate-700"><p class="text-xs text-slate-400 font-semibold">REFERENCE:</p><p class="text-sm text-slate-300 italic">The eclipse incident is recorded in Sahih al-Bukhari 1043. His rejection of kingship is a well-documented event in the Sirah literature.</p></div></div>
+                        </div>
+                        <div class="accordion-item bg-slate-800 rounded-lg border border-slate-700">
+                            <button class="accordion-button w-full text-left p-5 font-semibold text-white flex justify-between items-center">Motive 3: Deceived by Satan?<span class="icon text-teal-400">▼</span></button>
+                            <div class="accordion-content px-5 pb-5 text-slate-300">His message commanded the worship of One God, charity, kindness, and honesty—the very opposite of what Satan would desire. A kingdom divided against itself cannot stand. The message was one of pure monotheism and morality.
+                            <div class="mt-4 pt-3 border-t border-slate-700"><p class="text-xs text-slate-400 font-semibold">REFERENCE:</p><p class="text-sm text-slate-300 italic">The core tenets of Islam, as outlined in the Qur'an and Hadith (e.g., the Hadith of Gabriel, Sahih al-Bukhari 50), are fundamentally opposed to evil and deception.</p></div></div>
+                        </div>
+                        <div class="accordion-item bg-slate-800 rounded-lg border border-slate-700">
+                            <button class="accordion-button w-full text-left p-5 font-semibold text-white flex justify-between items-center">Motive 4: Copied from Others?<span class="icon text-teal-400">▼</span></button>
+                            <div class="accordion-content px-5 pb-5 text-slate-300">He was illiterate, a fact known by all. Furthermore, the Qur'an *corrects* historical and theological errors found in previous scriptures. A plagiarist copies; they don't correct the source material, especially if they cannot read it.
+                            <div class="mt-4 pt-3 border-t border-slate-700"><p class="text-xs text-slate-400 font-semibold">REFERENCE:</p><p class="text-sm text-slate-300 italic">The Prophet's illiteracy is mentioned in the Qur'an itself (7:157). The Qur'an's corrections of Biblical narratives are a central point of comparative religious studies.</p></div></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="history">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-white">2. Historical Accuracies in the Qur'an</h2>
+                <p class="mt-4 text-center max-w-3xl mx-auto text-slate-400">The Qur'an mentions specific historical facts unknown in 7th-century Arabia, only to be verified by modern archaeology centuries later.</p>
+                <div class="mt-12 max-w-3xl mx-auto space-y-4">
+                    <div class="accordion-item bg-slate-800 rounded-lg border border-slate-700">
+                        <button class="accordion-button w-full text-left p-5 font-semibold text-white flex justify-between items-center">Pharaoh's Title<span class="icon text-teal-400">▼</span></button>
+                        <div class="accordion-content px-5 pb-5 text-slate-300">The Qur'an correctly calls the ruler in Joseph's time "the King" and in Moses' time "Pharaoh."<div class="mt-4 pt-3 border-t border-slate-700"><p class="text-xs text-slate-400 font-semibold">VERIFIED REFERENCE:</p><p class="text-sm text-slate-300 italic">Egyptological consensus confirms the title "Pharaoh" (Per-aa, "Great House") began to be used for the monarch himself during the New Kingdom (c. 1550-1070 BC), the historical period associated with Moses.</p></div></div>
+                    </div>
+                    <div class="accordion-item bg-slate-800 rounded-lg border border-slate-700">
+                        <button class="accordion-button w-full text-left p-5 font-semibold text-white flex justify-between items-center">Haman in Egypt<span class="icon text-teal-400">▼</span></button>
+                        <div class="accordion-content px-5 pb-5 text-slate-300">The Qur'an names 'Haman' as a high official of Pharaoh.<div class="mt-4 pt-3 border-t border-slate-700"><p class="text-xs text-slate-400 font-semibold">VERIFIED REFERENCE:</p><p class="text-sm text-slate-300 italic">French scholar Dr. Maurice Bucaille, in "Moses and Pharaoh," referenced the "Dictionary of Personal Names of the New Kingdom" by Hermann Ranke. He found the name "Haman" recorded in hieroglyphs with the title "Chief of the stone-quarry workers."</p></div></div>
+                    </div>
+                    <div class="accordion-item bg-slate-800 rounded-lg border border-slate-700">
+                        <button class="accordion-button w-full text-left p-5 font-semibold text-white flex justify-between items-center">Iram of the Pillars<span class="icon text-teal-400">▼</span></button>
+                        <div class="accordion-content px-5 pb-5 text-slate-300">The Qur'an mentions the city of "Iram."<div class="mt-4 pt-3 border-t border-slate-700"><p class="text-xs text-slate-400 font-semibold">VERIFIED REFERENCE:</p><p class="text-sm text-slate-300 italic">The Ebla tablets, discovered in Syria in 1973, are cuneiform texts from approx. 2300 BC. These archives list trade partners, including a city named "Iram," confirming its historical existence.</p></div></div>
+                    </div>
+                    <div class="accordion-item bg-slate-800 rounded-lg border border-slate-700">
+                        <button class="accordion-button w-full text-left p-5 font-semibold text-white flex justify-between items-center">The People of Thamud<span class="icon text-teal-400">▼</span></button>
+                        <div class="accordion-content px-5 pb-5 text-slate-300">The Qur'an describes the people of Thamud carving homes out of mountains.<div class="mt-4 pt-3 border-t border-slate-700"><p class="text-xs text-slate-400 font-semibold">VERIFIED REFERENCE:</p><p class="text-sm text-slate-300 italic">The archaeological site of Mada'in Saleh (Al-Hijr) in Saudi Arabia, a UNESCO World Heritage site, provides direct physical evidence of magnificent tombs carved into rock faces, matching the Qur'anic account perfectly.</p></div></div>
+                    </div>
+                    <div class="accordion-item bg-slate-800 rounded-lg border border-slate-700">
+                        <button class="accordion-button w-full text-left p-5 font-semibold text-white flex justify-between items-center">Pharaoh's Preserved Body<span class="icon text-teal-400">▼</span></button>
+                        <div class="accordion-content px-5 pb-5 text-slate-300">The Qur'an (10:92) states Pharaoh's body would be preserved as a sign.<div class="mt-4 pt-3 border-t border-slate-700"><p class="text-xs text-slate-400 font-semibold">VERIFIED REFERENCE:</p><p class="text-sm text-slate-300 italic">The mummy of Ramesses II, widely considered the Pharaoh of the Exodus, was discovered in 1881. It is remarkably well-preserved and is displayed in the National Museum of Egyptian Civilization in Cairo.</p></div></div>
+                    </div>
+                    <div class="accordion-item bg-slate-800 rounded-lg border border-slate-700">
+                        <button class="accordion-button w-full text-left p-5 font-semibold text-white flex justify-between items-center">The Lowest Land<span class="icon text-teal-400">▼</span></button>
+                        <div class="accordion-content px-5 pb-5 text-slate-300">The Qur'an (30:3) states the Roman defeat occurred in the "adna al-ard" (lowest land).<div class="mt-4 pt-3 border-t border-slate-700"><p class="text-xs text-slate-400 font-semibold">VERIFIED REFERENCE:</p><p class="text-sm text-slate-300 italic">The decisive battles between the Byzantines and Persians took place near the Dead Sea region, which is the lowest point of land on Earth's surface, at over 400 meters below sea level.</p></div></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="prophecy">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-white">3. Future Prophecies in the Qur'an</h2>
+                <p class="mt-4 text-center max-w-3xl mx-auto text-slate-400">Specific prophecies of future events were made that have been fulfilled with stunning accuracy.</p>
+                <div class="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="section-card p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-teal-400">The Roman Victory</h3>
+                        <p class="mt-3 text-slate-300">At their lowest point, the Qur'an (30:2-4) prophesied a Roman victory over Persia "within three to nine years."</p>
+                        <div class="mt-4 pt-3 border-t border-slate-700"><p class="text-xs text-slate-400 font-semibold">REFERENCE:</p><p class="text-sm text-slate-300 italic">Documented by historians like Edward Gibbon, the Byzantine-Sasanian War saw a Roman victory in 627 AD, fitting the timeline perfectly.</p></div>
+                    </div>
+                    <div class="section-card p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-teal-400">The Greening of Arabia</h3>
+                        <p class="mt-3 text-slate-300">The Prophet (ﷺ) foretold that "the land of Arabia will return to meadows and rivers."</p>
+                        <div class="mt-4 pt-3 border-t border-slate-700"><p class="text-xs text-slate-400 font-semibold">REFERENCE:</p><p class="text-sm text-slate-300 italic">NASA satellite data and studies in journals like "Remote Sensing" (2018) confirm a significant increase in vegetation across the peninsula.</p></div>
+                    </div>
+                    <div class="section-card p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-teal-400">Conquest of Makkah</h3>
+                        <p class="mt-3 text-slate-300">While exiled, the Qur'an (48:27) promised the Muslims a secure return to Makkah.</p>
+                        <div class="mt-4 pt-3 border-t border-slate-700"><p class="text-xs text-slate-400 font-semibold">REFERENCE:</p><p class="text-sm text-slate-300 italic">This was fulfilled with the peaceful conquest of Makkah in 630 AD, a major event documented in all historical accounts of the period.</p></div>
+                    </div>
+                    <div class="section-card p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-teal-400">Competition in Tall Buildings</h3>
+                        <p class="mt-3 text-slate-300">He prophesied seeing "barefoot, destitute shepherds competing in constructing lofty buildings."</p>
+                        <div class="mt-4 pt-3 border-t border-slate-700"><p class="text-xs text-slate-400 font-semibold">REFERENCE:</p><p class="text-sm text-slate-300 italic">A visually verifiable prophecy in the modern Gulf states, where nomadic-descended nations now compete to build the world's tallest skyscrapers.</p></div>
+                    </div>
+                    <div class="section-card p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-teal-400">The Fate of Abu Lahab</h3>
+                        <p class="mt-3 text-slate-300">The Qur'an (Surah 111) condemned the Prophet's uncle to damnation while he was still alive and powerful.</p>
+                        <div class="mt-4 pt-3 border-t border-slate-700"><p class="text-xs text-slate-400 font-semibold">REFERENCE:</p><p class="text-sm text-slate-300 italic">Abu Lahab had years to discredit the Qur'an by feigning conversion, but he died as a disbeliever, as documented in historical Islamic sources, fulfilling the prophecy.</p></div>
+                    </div>
+                     <div class="section-card p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-teal-400">Preservation of the Qur'an</h3>
+                        <p class="mt-3 text-slate-300">The Qur'an (15:9) promises, "Indeed, We will be its guardian."</p>
+                        <div class="mt-4 pt-3 border-t border-slate-700"><p class="text-xs text-slate-400 font-semibold">REFERENCE:</p><p class="text-sm text-slate-300 italic">Early manuscripts like the Birmingham and Sana'a fragments, dated to the 7th century, show a text virtually identical to today's Qur'an, confirming its unparalleled preservation.</p></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="science">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-white">4. Scientific Knowledge in the Qur'an</h2>
+                <p class="mt-4 text-center max-w-3xl mx-auto text-slate-400">The Qur'an contains statements about the natural world that align perfectly with modern scientific discoveries.</p>
+                 <div class="mt-12 max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
+                    <div class="section-card p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-teal-400">Embryology</h3>
+                        <p class="mt-3 text-slate-300">Describes the embryo as an *'alaqah* (leech-like thing) and *mudghah* (chewed-like substance).</p>
+                        <div class="mt-4 pt-3 border-t border-slate-700"><p class="text-xs text-slate-400 font-semibold">REFERENCE:</p><p class="text-sm text-slate-300 italic">Dr. Keith L. Moore, author of "The Developing Human," confirmed the accuracy of these descriptions, stating they couldn't have been known in the 7th century.</p></div>
+                    </div>
+                    <div class="section-card p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-teal-400">Origin of the Universe</h3>
+                        <p class="mt-3 text-slate-300">"The heavens and the earth were a joined entity (ratqan), and We separated them" (21:30).</p>
+                        <div class="mt-4 pt-3 border-t border-slate-700"><p class="text-xs text-slate-400 font-semibold">REFERENCE:</p><p class="text-sm text-slate-300 italic">This parallels the Big Bang theory, first proposed by Georges Lemaître in 1927 and supported by Edwin Hubble's 1929 observations.</p></div>
+                    </div>
+                    <div class="section-card p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-teal-400">Expansion of the Universe</h3>
+                        <p class="mt-3 text-slate-300">"And the heaven We built with power, and indeed, We are its expander" (51:47).</p>
+                        <div class="mt-4 pt-3 border-t border-slate-700"><p class="text-xs text-slate-400 font-semibold">REFERENCE:</p><p class="text-sm text-slate-300 italic">Confirmed by Edwin Hubble's 1929 discovery that galaxies are moving away from us, a cornerstone of modern cosmology.</p></div>
+                    </div>
+                    <div class="section-card p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-teal-400">Geology of Mountains</h3>
+                        <p class="mt-3 text-slate-300">The Qur'an describes mountains as "pegs" (78:6-7), providing stability.</p>
+                        <div class="mt-4 pt-3 border-t border-slate-700"><p class="text-xs text-slate-400 font-semibold">REFERENCE:</p><p class="text-sm text-slate-300 italic">The geology textbook "Earth" by Dr. Frank Press confirms mountains have deep roots that stabilize the Earth's crust, a concept developed in the 20th century.</p></div>
+                    </div>
+                    <div class="section-card p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-teal-400">The Water Cycle</h3>
+                        <p class="mt-3 text-slate-300">The Qur'an (e.g., 39:21) accurately describes evaporation, cloud formation, and rain.</p>
+                        <div class="mt-4 pt-3 border-t border-slate-700"><p class="text-xs text-slate-400 font-semibold">REFERENCE:</p><p class="text-sm text-slate-300 italic">The modern understanding of the water cycle was systematically formulated by Bernard Palissy in 1580 AD, many centuries after the Qur'an's revelation.</p></div>
+                    </div>
+                    <div class="section-card p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-teal-400">The Protective Atmosphere</h3>
+                        <p class="mt-3 text-slate-300">The Qur'an (21:32) describes the sky as a "protected ceiling."</p>
+                        <div class="mt-4 pt-3 border-t border-slate-700"><p class="text-xs text-slate-400 font-semibold">REFERENCE:</p><p class="text-sm text-slate-300 italic">The discovery of the ozone layer and the atmosphere's role in filtering harmful radiation and burning up meteorites are 20th-century scientific findings.</p></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="nature">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-white">5. Linguistic & Mathematical Nature of the Qur'an</h2>
+                <p class="mt-4 text-center max-w-3xl mx-auto text-slate-400">The very structure of the Qur'an, in its language and numerical composition, is considered a miracle.</p>
+                <div class="mt-12 grid lg:grid-cols-2 gap-8 items-start">
+                    <div class="section-card p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-teal-400">Linguistic Inimitability</h3>
+                        <p class="mt-3 text-slate-300">Revealed in a unique literary form, its eloquence captivated masters of the Arabic language.</p>
+                        <div class="mt-4 pt-3 border-t border-slate-700"><p class="text-xs text-slate-400 font-semibold">REFERENCE:</p><p class="text-sm text-slate-300 italic">The concept of *I'jaz* is a major field of classical Islamic scholarship. Works like "Dala'il al-I'jaz" by Al-Jurjani (d. 1078 AD) provide detailed analyses of its unique rhetorical properties.</p></div>
+                    </div>
+                    <div class="section-card p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-teal-400">The Unmet Challenge</h3>
+                        <p class="mt-3 text-slate-300">The Qur'an issues a direct challenge to produce even a single chapter like it (2:23).</p>
+                        <div class="mt-4 pt-3 border-t border-slate-700"><p class="text-xs text-slate-400 font-semibold">REFERENCE:</p><p class="text-sm text-slate-300 italic">Historically, despite intense opposition, no one has ever been able to meet this literary challenge, a fact noted by orientalists and Islamic scholars alike.</p></div>
+                    </div>
+                    <div class="section-card p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-teal-400">Psychological Impact</h3>
+                        <p class="mt-3 text-slate-300">The sound and recitation of the Qur'an have a profound effect on listeners, even non-Arabs.</p>
+                        <div class="mt-4 pt-3 border-t border-slate-700"><p class="text-xs text-slate-400 font-semibold">REFERENCE:</p><p class="text-sm text-slate-300 italic">The stories of early converts, such as Umar ibn al-Khattab, who were moved to accept Islam upon hearing its recitation, are documented in historical records like Ibn Hisham's biography.</p></div>
+                    </div>
+                    <div class="section-card p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-teal-400">Mathematical Symmetries</h3>
+                        <p class="mt-3 text-slate-300 mb-4">A precise balance exists in the frequency of key words throughout the text.</p>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 text-center">
+                            <div><div class="text-3xl font-bold text-white counter" data-target="365">0</div><div class="text-sm text-slate-400">'Day'</div></div>
+                            <div><div class="text-3xl font-bold text-white counter" data-target="12">0</div><div class="text-sm text-slate-400">'Month'</div></div>
+                            <div><div class="text-3xl font-bold text-white counter" data-target="23">0</div><div class="text-sm text-slate-400">'Man'/'Woman'</div></div>
+                            <div><div class="text-3xl font-bold text-white counter" data-target="115">0</div><div class="text-sm text-slate-400">'World'/'Hereafter'</div></div>
+                            <div><div class="text-3xl font-bold text-white counter" data-target="88">0</div><div class="text-sm text-slate-400">'Angels'/'Devils'</div></div>
+                            <div><div class="text-3xl font-bold text-white counter" data-target="114">0</div><div class="text-sm text-slate-400">Total Chapters</div></div>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-slate-700"><p class="text-xs text-slate-400 font-semibold">REFERENCE:</p><p class="text-sm text-slate-300 italic">These frequencies are verifiable through computational analysis of the Qur'anic text using digital concordances, as noted by modern researchers.</p></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <footer class="text-center py-20 mt-24 border-t border-slate-800">
+            <p class="text-slate-400 max-w-3xl mx-auto">This exposition presents a fraction of the evidences discussed by scholars. The invitation is one of sincere reflection and further research.</p>
+            <p class="mt-4 text-lg italic text-slate-300">"And say, 'The truth is from your Lord, so whoever wills - let him believe; and whoever wills - let him disbelieve.'" <br><span class="text-sm text-slate-500">(The Qur'an, 18:29)</span></p>
+        </footer>
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIconOpen = mobileMenuButton.querySelector('.menu-icon-open');
+            const menuIconClose = mobileMenuButton.querySelector('.menu-icon-close');
+
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                menuIconOpen.classList.toggle('hidden');
+                menuIconClose.classList.toggle('hidden');
+            });
+
+            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    menuIconOpen.classList.remove('hidden');
+                    menuIconClose.classList.add('hidden');
+                });
+            });
+
+            const accordionButtons = document.querySelectorAll('.accordion-button');
+            accordionButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const currentlyActive = document.querySelector('.accordion-button.active');
+                    if(currentlyActive && currentlyActive !== button) {
+                        currentlyActive.classList.remove('active');
+                    }
+                    button.classList.toggle('active');
+                });
+            });
+
+            const counters = document.querySelectorAll('.counter');
+            const speed = 200;
+
+            const animateCounter = (counter) => {
+                const target = +counter.getAttribute('data-target');
+                const updateCount = () => {
+                    const count = +counter.innerText;
+                    const increment = target / speed;
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + increment);
+                        setTimeout(updateCount, 1);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                updateCount();
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounter(entry.target);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.8 });
+
+            counters.forEach(counter => {
+                observer.observe(counter);
+            });
+        });
+    </script>
+
+</body>
+</html>
